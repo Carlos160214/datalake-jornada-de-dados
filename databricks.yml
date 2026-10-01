@@ -1,0 +1,22 @@
+# Databricks Asset Bundle da jornada de dados: camada silver do e-commerce
+# como um Lakeflow Declarative Pipeline.
+bundle:
+  name: datalake_jornada_de_dados
+
+include:
+  - resources/*.yml
+
+variables:
+  catalog:
+    description: Catálogo Unity Catalog usado pelo pipeline e pelos testes de qualidade.
+    default: ecommerce
+  schema:
+    description: Schema padrão de saída da camada silver.
+    default: silver
+
+targets:
+  dev:
+    mode: development
+    default: true
+    workspace:
+      host: https://dbc-0d290e20-8445.cloud.databricks.com

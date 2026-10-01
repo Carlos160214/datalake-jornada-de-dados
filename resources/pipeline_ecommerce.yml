@@ -1,0 +1,14 @@
+# Pipeline Lakeflow Declarative (camada silver) da jornada de dados.
+
+resources:
+  pipelines:
+    pipeline_ecommerce:
+      name: pipeline-ecommerce
+      catalog: ${var.catalog}
+      schema: ${var.schema}
+      serverless: true
+      root_path: ".."
+
+      libraries:
+        - glob:
+            include: ../transformations/**

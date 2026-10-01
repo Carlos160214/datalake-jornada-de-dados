@@ -1,0 +1,19 @@
+# Job "Pipeline E-commerce": roda o pipeline e, em seguida, os testes de qualidade.
+
+resources:
+  jobs:
+    pipeline_ecommerce_job:
+      name: "Pipeline E-commerce"
+
+      tasks:
+        - task_key: run_pipeline
+          pipeline_task:
+            pipeline_id: ${resources.pipelines.pipeline_ecommerce.id}
+
+        - task_key: testes_qualidade
+          depends_on:
+            - task_key: run_pipeline
+          notebook_task:
+            notebook_path: ../testes/testes_qualidade.py
+            base_parameters:
+              catalogo: ${var.catalog}

@@ -52,3 +52,7 @@ tmp/
 Thumbs.db
 desktop.ini
 ~$*
+
+# ===== Databricks =====
+.databricks/
+.databrickscfg
